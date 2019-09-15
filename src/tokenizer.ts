@@ -72,6 +72,12 @@ export const tokenize = function* (input: string): IterableIterator<Token>{
                 return;
             }
         }
+        else if (token === "" && input[i] === '.'){
+
+            yield new Token(TokenType.Dot, '.', {row: line, col: chr});
+            chr++;
+            i++;
+        }
         else{
             token += input[i++];
         }
@@ -97,7 +103,8 @@ class Token {
 
 export enum TokenType {
     Bracket,
-    Name
+    Name,
+    Dot
 }
 
 export enum BracketDirection {
