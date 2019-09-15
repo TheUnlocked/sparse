@@ -14,6 +14,9 @@ export default class SExpression {
         if (this.head instanceof SExpression){
             result += `(${this.head.toString()})`;
         }
+        else if (this.head === null){
+            result += '()';
+        }
         else{
             result += this.head;
         }

@@ -51,10 +51,27 @@ export const parse = (input: string): SExpression => {
                             currentSexpr = sexprStack.pop()!;
                         }
                     }
-                    currentSexpr.tail = currentSexpr.tail || null;
-                    currentSexpr = sexprStack.pop()!;
-                    if (currentSexpr === undefined){
-                        errorList.push({pos: token.positionInfo, message: "Missing closing bracket."});
+                    if (currentSexpr.head === undefined){
+                        const innerSexpr = currentSexpr;
+                        currentSexpr = sexprStack.pop()!;
+                        if (currentSexpr === undefined){
+                            errorList.push({pos: token.positionInfo, message: "Missing closing bracket."});
+                        }
+                        else{
+                            if (currentSexpr.head === innerSexpr){
+                                currentSexpr.head = null;
+                            }
+                            else if (currentSexpr.tail === innerSexpr){
+                                currentSexpr.tail = null;
+                            }
+                        }
+                    }
+                    else{
+                        currentSexpr.tail = currentSexpr.tail || null;
+                        currentSexpr = sexprStack.pop()!;
+                        if (currentSexpr === undefined){
+                            errorList.push({pos: token.positionInfo, message: "Missing closing bracket."});
+                        }
                     }
                 }
             }
