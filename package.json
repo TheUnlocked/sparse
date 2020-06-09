@@ -1,0 +1,21 @@
+{
+  "name": "sparse",
+  "version": "1.0.0",
+  "description": "A small s-expression parser",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheUnlocked/sparse.git"
+  },
+  "author": "Unlocked",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheUnlocked/sparse/issues"
+  },
+  "homepage": "https://github.com/TheUnlocked/sparse#readme",
+  "dependencies": {}
+}
