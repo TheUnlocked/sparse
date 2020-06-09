@@ -4,6 +4,7 @@ export default class SExpression {
 
     constructor();
     constructor(head: any);
+    constructor(head: any, tail: any);
     constructor(head?: any, tail?: any){
         this.head = head;
         this.tail = tail;
